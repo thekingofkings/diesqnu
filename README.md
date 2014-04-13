@@ -1,4 +1,4 @@
-#Django based server provides Information Extraction, Serves user Queries, and NOtifies query Updates (DIESQNU)#
+#Django based server provides Information Extraction, Serves user Queries, and Notifies query Updates (DIESQNU)#
 
 ##Naming##
 The name of this project DIESQNU is from the functionality of this server. 
