@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'quote',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -57,8 +58,12 @@ WSGI_APPLICATION = 'ist510prj.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': 'jessieli-ubuntu.ist.psu.edu',
+        'NAME': 'ist510quote',
+        'PASSWORD': 'ist510',
+        'PORT': '3306',
+        'USER': 'ist510',
     }
 }
 
