@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import RequestContext, loader
 
 
 # Create your views here.
 def index( request ):
-    return HttpResponse("Welcome to our IST 510 project!")
+    template = loader.get_template("quote/index.html")
+    context = RequestContext( request )
+    return HttpResponse( template.render( context ) )
     
