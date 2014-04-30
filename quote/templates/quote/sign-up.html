@@ -3,8 +3,10 @@
 {% block title %}Sign Up{% endblock %}
 
 {% block innerblock %}
+
+	{% if status == "showform" %}
 	<h1 class="cover-heading">Sign Up</h1>
-	<form action={% url 'signup' %} method=post>
+	<form action={% url  "quote.views.createUser" %} method=post>
 	{% csrf_token %}
 		<p class=lead><label class=lbl>User Name:</label><input type=text name=usrname class=keyin></input></p>
 		<p class=lead><label class=lbl>Email:</label><input type=email name=email class=keyin></input></p>
@@ -12,7 +14,42 @@
 		<p class=lead><label class=lbl>Last Name:</label><input type=text name=lname class=keyin></input></p>
 		<p class=lead><label class=lbl>Password:</label><input type=password name=pwd class=keyin></input></p>
 		<p class=lead><label class=lbl>Password again:</label><input type=password name=pwdv class=keyin></input></p>
-		<p class=lead><input type=submit value="Sign Up!" class=keyin></p>
+		<p class=lead><input type=submit value="Sign Up!" class="keyin btn btn-lg btn-default"></p>
 	</form>
+	
+	{% elif status == "nousrname" %}
+	
+	<h1 class="cover-heading">Sign Up Warning!</h1>
+	<p class=lead>There is no user name given. Please <a href={% url 'signup' %}>retry</a>.</p>
+
+	{% elif status == "noemail" %}
+	
+	<h1 class="cover-heading">Sign Up Warning!</h1>
+	<p class=lead>There is no email given. Please <a href={% url 'signup' %}>retry</a>.</p>
+	
+	{% elif status == "nopwd" %}
+	
+	<h1 class="cover-heading">Sign Up Warning!</h1>
+	<p class=lead>There is no password given. Please <a href={% url 'signup' %}>retry</a>.</p>
+	
+	{% elif status == "success" %}
+	
+	<h1 class="cover-heading">Congratulations!</h1>
+	<p class=lead>A new user has been created for you!</p>
+	
+	{% elif status == "wrongpwd" %}
+	
+	<h1 class="cover-heading">Sign Up Warning!</h1>
+	<p  class=lead>Two passwords do not match. Please <a href={% url 'signup' %}>retry</a>.</p>
+	
+	{% elif status == "usrexists" %}
+	
+	<h1 class="cover-heading">Sign Up Warning!</h1>
+	<p class=lead>The user name already exits. Please <a href={% url 'signup' %}>retry</a>.</p>
+	
+	{% endif %}
+	
+	
+	
 {% endblock %}
 		
