@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)http://getbootstrap.com/examples/cover/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="IST510 final project">
+    <meta name="author" content="Hongjian Wang">
+	
+	
+	{% load staticfiles %}
+    <link rel="shortcut icon" href="{% static 'quote/favicon.ico' %}">
+
+    <title>
+	{% block title %}DIESQNU{% endblock %}
+	</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'quote/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'quote/cover.css' %}" rel="stylesheet">
+
+  <style id="holderjs-style" type="text/css"></style></head>
+
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">DIESQNU</h3>
+              <ul class="nav masthead-nav">
+					<li class={{ nvg1 }}><a href={% url 'index' %}>Search</a></li>
+					<li class={{ nvg2 }}><a href={% url 'signup' %}>Sigh Up</a></li>
+					<li class={{ nvg3 }}><a href={% url "aboutus" %}>About Us</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="inner cover">
+			{% block innerblock %}
+            
+			{% endblock %}
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Created from <a href="http://getbootstrap.com/">Bootstrap</a>, <a href="https://www.djangoproject.com/">Django</a>, <a href="http://www.mysql.com/">MySQL</a> by <a href="">@team 10</a>.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'quote/jquery.min.js' %}"></script>
+    <script src="{% static 'quote/bootstrap.min.js' %}"></script>
+    <script src="{% static 'quote/docs.min.js' %}"></script>
+  
+
+</body></html>

@@ -136,6 +136,7 @@ body {
     position: fixed;
     top: 0;
   }
+  
   .mastfoot {
     position: fixed;
     bottom: 0;
@@ -158,4 +159,18 @@ body {
   .cover-container {
     width: 700px;
   }
+}
+
+
+
+/********************************************************/
+.lbl {
+	width: 240px;
+	margin-right: 10px;
+	text-align: right;
+}
+
+
+.keyin {
+	color: blue;
 }

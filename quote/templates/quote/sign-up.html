@@ -1,0 +1,18 @@
+{% extends 'quote/base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block innerblock %}
+	<h1 class="cover-heading">Sign Up</h1>
+	<form action={% url 'signup' %} method=post>
+	{% csrf_token %}
+		<p class=lead><label class=lbl>User Name:</label><input type=text name=usrname class=keyin></input></p>
+		<p class=lead><label class=lbl>Email:</label><input type=email name=email class=keyin></input></p>
+		<p class=lead><label class=lbl>First Name:</label><input type=text name=fname class=keyin></input></p>
+		<p class=lead><label class=lbl>Last Name:</label><input type=text name=lname class=keyin></input></p>
+		<p class=lead><label class=lbl>Password:</label><input type=password name=pwd class=keyin></input></p>
+		<p class=lead><label class=lbl>Password again:</label><input type=password name=pwdv class=keyin></input></p>
+		<p class=lead><input type=submit value="Sign Up!" class=keyin></p>
+	</form>
+{% endblock %}
+		

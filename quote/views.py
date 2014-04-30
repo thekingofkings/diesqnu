@@ -9,3 +9,13 @@ def index( request ):
     context = RequestContext( request )
     return HttpResponse( template.render( context ) )
     
+    
+    
+def about_us( request ):
+    return render( request, "quote/about-us.html", {  
+            'nvg3': 'active',
+            'name': 'visitor',
+        })
+        
+def sign_up( request ):
+    return render( request, "quote/sign-up.html" )
