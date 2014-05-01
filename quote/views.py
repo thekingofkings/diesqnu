@@ -8,9 +8,8 @@ from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 def index( request ):
     template = loader.get_template("quote/index.html")
-    context = RequestContext( request, {'nvg1': 'active'} )
+    context = RequestContext( request, {'nvg1': 'active', 'status': 'query'} )
     return HttpResponse( template.render( context ) )
-    
     
     
 def about_us( request ):
@@ -104,4 +103,9 @@ def logout_view( request ):
         
   
 def search( request ):
-    pass
+    if request.method == 'POST':
+        return render( request, "quote/index.html", {
+            'nvg1': 'active',
+            'status': 'result'
+        })
+    
