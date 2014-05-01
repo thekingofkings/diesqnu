@@ -9,5 +9,6 @@ urlpatterns = patterns( '',
     url(r'^signup$', views.sign_up, name='signup'),
     url(r'^login$', views.login_view, name='login'),
     url(r'^logout$', views.logout_view, name='logout'),
+    url(r'^search$', views.search, name='search'),
     url(r'^createuser$', "quote.views.createUser")
 )

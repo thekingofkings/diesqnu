@@ -10,8 +10,11 @@
 {% block innerblock %}
 	<h1 class="cover-heading">Electricity Quote Search (DIESQNU)</h1>
 	<p class="lead">DIESQNU is a Django based server provides Information Extraction, Serves user Queries, and Notifies query Updates.</p>
-	<p class="lead">
-	  <a href="http://getbootstrap.com/examples/cover/#" class="btn btn-lg btn-default">Search</a>
-	</p>
+	
+	<form action={% url  "search" %} method=post>
+	{% csrf_token %}
+	<p class="lead"><input type=text name=querystring class=querybox></input></p>
+	<p class="lead"><input type=submit value="Search" class="keyin btn btn-lg btn-default"></p>
+	</form>
 {% endblock %}
 			

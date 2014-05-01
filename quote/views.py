@@ -100,3 +100,8 @@ def logout_view( request ):
     if request.user.is_authenticated:
         logout( request )
         return redirect("index")
+        
+        
+  
+def search( request ):
+    pass
