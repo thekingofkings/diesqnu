@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 
 
 # Create your views here.
@@ -18,12 +19,16 @@ def about_us( request ):
             'name': 'visitor',
         })
         
+        
+        
 def sign_up( request ):
     return render( request, "quote/sign-up.html" , {
             'nvg2': 'active',
             'status': 'showform',
         })
-        
+ 
+ 
+ 
 def createUser( request ):
     usrname = request.POST['usrname']
     email = request.POST['email']
@@ -64,5 +69,34 @@ def createUser( request ):
         return render( request, "quote/sign-up.html", {
             'nvg2': 'active',
             'status': 'usrexists',
-         })
+        })
     
+ 
+
+ 
+ 
+def login_view( request ):
+    if request.method == 'GET':
+        return render( request, "quote/login.html", {
+            'nvg4': 'active',
+        })
+    elif request.method == 'POST':
+        usrname = request.POST['usrname']
+        pwd = request.POST['pwd']
+        u = authenticate(username=usrname, password=pwd)
+        if u is not None:
+            if u.is_active:
+                login( request, u )
+                return redirect("index")
+        else:
+            return render( request, "quote/login.html", {
+                'nvg4': 'active',
+                'status': 'failed',
+            })
+            
+            
+
+def logout_view( request ):
+    if request.user.is_authenticated:
+        logout( request )
+        return redirect("index")

@@ -1,0 +1,26 @@
+{% extends 'quote/base.html' %}
+
+
+{% block title %}Login{% endblock %}
+
+
+{% block innerblock %}
+	
+	{% if status != 'failed' %}
+	
+	<h1 class="cover-heading">Login</h1>
+	<form action={% url  "login" %} method=post>
+	{% csrf_token %}
+		<p class=lead><label class=lbl>User Name:</label><input type=text name=usrname class=keyin></input></p>
+		<p class=lead><label class=lbl>Password:</label><input type=password name=pwd class=keyin></input></p>
+		<p class=lead><input type=submit value="Login" class="keyin btn btn-lg btn-default"></p>
+	</form>
+	
+	{% else %}
+	
+	<h1 class="cover-heading">Login Warning!</h1>
+	<p class=lead>The user name or password is incorrect. Please <a href={% url 'login' %}>retry</a>.</p>
+	
+	{% endif %}
+
+{% endblock %}

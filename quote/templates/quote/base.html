@@ -38,9 +38,23 @@
 					<li class={{ nvg1 }}><a href={% url 'index' %}>Search</a></li>
 					<li class={{ nvg2 }}><a href={% url 'signup' %}>Sigh Up</a></li>
 					<li class={{ nvg3 }}><a href={% url "aboutus" %}>About Us</a></li>
+					{% if user.is_authenticated %}
+					<li class={{ nvg4 }}><a href={% url "logout" %}>Logout</a></li>
+					{% else %}
+					<li class={{ nvg4 }}><a href={% url "login" %}>Login</a></li>			
+					{% endif %}
               </ul>
             </div>
+			
+			{% if user.is_authenticated %}
+			  <div id='welpane'>
+				<p>Welcome, {{ user.username }}.</p>
+			  </div>
+		   {% endif %}
+		  
           </div>
+		  
+		  
 
           <div class="inner cover">
 			{% block innerblock %}
