@@ -1,0 +1,34 @@
+{% extends "quote/base.html" %}
+
+{% block navigator %}
+	<li><a href="http://getbootstrap.com/examples/cover/#">Mange Account</a></li>
+	<li><a href="http://getbootstrap.com/examples/cover/#">Register Query</a></li>
+	<li><a href="http://getbootstrap.com/examples/cover/#">About Us</a></li>
+{% endblock %}
+				
+				
+{% block innerblock %}
+
+	{% if status == 'query' %}
+	
+	<h1 class="cover-heading">Electricity Quote Search (DIESQNU)</h1>
+	<p class="lead">DIESQNU is a Django based server provides Information Extraction, Serves user Queries, and Notifies query Updates.</p>
+	
+	<form action={% url  "search" %} method=post>
+	{% csrf_token %}
+	<p class="lead"><input type=text name=querystring class=querybox></input></p>
+	<p class="lead"><input type=submit value="Search" class="keyin btn btn-lg btn-default"></p>
+	</form>
+	
+	{% elif status == 'result' %}
+	
+	<form action={% url "search" %} method=post>
+	<input type=text name=querystring class=querybox></input>
+	<input type=submit value="Search" class="keyin btn btn-lg btn-default"></p>
+	</form>
+	
+	{% endif %}
+	
+	
+{% endblock %}
+			
