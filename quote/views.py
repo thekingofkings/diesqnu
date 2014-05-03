@@ -104,8 +104,12 @@ def logout_view( request ):
   
 def search( request ):
     if request.method == 'POST':
+        query = request.POST['querystring']
+        
         return render( request, "quote/index.html", {
             'nvg1': 'active',
-            'status': 'result'
+            'status': 'result',
+            'query': query,
+            'results': qresult,
         })
     

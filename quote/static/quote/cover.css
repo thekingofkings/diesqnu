@@ -163,6 +163,8 @@ body {
 
 
 
+
+
 /********************************************************/
 .lbl {
 	width: 240px;
@@ -172,7 +174,9 @@ body {
 
 
 .keyin {
+	margin-top: 15px;
 	color: blue;
+	display: inline-block;
 }
 
 
@@ -188,4 +192,10 @@ body {
 	width: 600px;
 	text-align: left;
 	color: black;
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+.results {
+	min-height: 850px;
 }

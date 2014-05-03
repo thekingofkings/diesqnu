@@ -22,10 +22,13 @@
 	
 	{% elif status == 'result' %}
 	
+	<div class=results>
 	<form action={% url "search" %} method=post>
-	<input type=text name=querystring class=querybox></input>
-	<input type=submit value="Search" class="keyin btn btn-lg btn-default"></p>
+	{% csrf_token %}
+		<input type=text name=querystring class=querybox value={{ query }}></input>
+		<button type=submit value="Search" class="btn btn-default">Search</button>
 	</form>
+	</div>
 	
 	{% endif %}
 	
