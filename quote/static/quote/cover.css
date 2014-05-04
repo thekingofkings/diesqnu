@@ -26,7 +26,6 @@ a:hover {
 
 html,
 body {
-  height: 100%;
   background-color: #333;
 }
 body {
@@ -108,7 +107,9 @@ body {
  */
 
 .cover {
-  padding: 0 20px;
+  margin-top: 120px;
+  margin-bottom: 120px;
+  min-height: 1000px;  
 }
 .cover .btn-lg {
   padding: 10px 20px;
@@ -123,6 +124,7 @@ body {
 .mastfoot {
   color: #999; /* IE8 proofing */
   color: rgba(255,255,255,.5);
+  background-color: #333;
 }
 
 
@@ -135,6 +137,7 @@ body {
   .masthead {
     position: fixed;
     top: 0;
+	background-color: #333;
   }
   
   .mastfoot {
@@ -198,4 +201,17 @@ body {
 
 .results {
 	min-height: 850px;
+}
+
+form {
+	margin-bottom: 20px;
+}
+
+#res-list {
+	text-align: left;
+}
+
+em {
+	font-style: bold;
+	font-size: large;
 }

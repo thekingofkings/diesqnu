@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from models import Record
 
 
 # Create your views here.
@@ -105,7 +106,9 @@ def logout_view( request ):
 def search( request ):
     if request.method == 'POST':
         query = request.POST['querystring']
-        
+        print query
+        qresult = Record.objects.filter(name__contains=query)
+        print len( qresult )
         return render( request, "quote/index.html", {
             'nvg1': 'active',
             'status': 'result',

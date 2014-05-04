@@ -28,6 +28,35 @@
 		<input type=text name=querystring class=querybox value={{ query }}></input>
 		<button type=submit value="Search" class="btn btn-default">Search</button>
 	</form>
+	
+		<div id=res-list>
+		<p class=lead>There are {{ results|length }} results found.</p>
+		<ul>
+		{% for rec in results %}
+		<li>
+			<p><h4>{{ rec.name }}</h4>Tel: {{ rec.telnum }}</p>
+			{% if rec.type == 0 %}
+				<p>The price is <em>{{ rec.price |stringformat:".2f" }}</em> cents / kWh (valid for {{ rec.month }} months).</p>
+			{% elif rec.type == 1 %}
+				<p>The price is <em>{{ rec.price |stringformat:'.2f' }}</em> cents / kWh (valid for {{ rec.year }} years).</p>
+			{% elif rec.type == 2 %}
+				<p>The price is <em>{{ rec.price |stringformat:'.2f'}}</em> cents / kWh (valid by {{ rec.date }}).</p>
+			{% elif rec.type == 3 %}
+				<p>The price is <em>{{ rec.price |stringformat:'.2f'}}</em> cents / kWh (monthly variable price).</p>
+			{% endif %}
+			
+			{% if rec.fee != None %}
+				<p>There is extra fee of {{ rec.fee }}.</p>
+			{% endif %}
+			
+			{% if rec.annotation != None %}
+				<p>Annotation: {{ rec.annotation }}.</p>
+			{% endif %}
+		</li>
+		{% endfor %}
+		</ul>
+		</div>
+	
 	</div>
 	
 	{% endif %}
