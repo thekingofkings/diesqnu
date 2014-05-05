@@ -107,7 +107,7 @@ def search( request ):
     if request.method == 'POST':
         query = request.POST['querystring']
         print query
-        qresult = Record.objects.filter(name__contains=query)
+        qresult = Record.objects.filter(name__icontains=query)
         print len( qresult )
         return render( request, "quote/index.html", {
             'nvg1': 'active',
