@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Record(models.Model):
@@ -26,3 +27,20 @@ class Record(models.Model):
     price   = models.FloatField(null=True)
     fee = models.IntegerField(null=True)
     annotation = models.CharField(max_length=500, null=True)
+    
+    
+    def __str__( self ):
+        return self.name
+    
+    
+class Query( models.Model ):
+    user = models.ForeignKey(User)
+    queryStr = models.CharField(max_length=200)
+    queryRes = models.ManyToManyField(Record)
+    cntRes = models.IntegerField( null=True )
+    isRegistered = models.BooleanField(default=False)
+    time = models.DateTimeField( auto_now=True )
+    
+    
+    def __str__( self ):
+        return queryStr

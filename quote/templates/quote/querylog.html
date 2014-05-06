@@ -1,0 +1,33 @@
+{% extends "quote/base.html" %}
+
+{% block title %}Query Log{% endblock %}
+
+{% block innerblock %}
+<h1 class="cover-heading">Query log for {{ user.username }}</h1>
+
+<div class=res>
+<p class=checkfield>Query string</p>
+<p class=timefield>Query time</p>
+<p class=nqrfield>Number of Query Results</p>
+</div>
+<form action={% url 'registerQuery' %} method=post>
+	{% for query in querylogs %}
+		<div class=res>
+		<p class=checkfield>
+			<input type=checkbox name=query value=query.id
+			{% if query.isRegistered %}checked{% endif %}>
+			{{ query.queryStr }}</input>
+		</p>
+		<p class=timefield>
+			{{ query.time }}
+		</p>
+		<p class=nqrfield>
+			{{ query.cntRes }}
+		</p>
+		</div>
+	{% endfor %}
+<input type=submit value=Submit class="keyin btn btn-default"></input>
+</form>
+
+            
+{% endblock %}

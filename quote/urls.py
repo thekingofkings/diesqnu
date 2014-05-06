@@ -10,5 +10,7 @@ urlpatterns = patterns( '',
     url(r'^login$', views.login_view, name='login'),
     url(r'^logout$', views.logout_view, name='logout'),
     url(r'^search$', views.search, name='search'),
+    url(r'^querylog$', views.query_log, name='querylog'),
+    url(r'^registerquery$', views.registerQuery, name='registerQuery'),
     url(r'^createuser$', "quote.views.createUser")
 )

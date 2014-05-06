@@ -48,7 +48,7 @@
 			
 			{% if user.is_authenticated %}
 			  <div id='welpane'>
-				<p>Welcome, {{ user.username }}.</p>
+				<p>Welcome, {{ user.username }}. Visit <a href={% url 'querylog' %}>query log.</a></p>
 			  </div>
 		   {% endif %}
 		  

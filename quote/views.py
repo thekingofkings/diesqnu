@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from models import Record
+from models import Record, Query
 
 
 # Create your views here.
@@ -106,13 +106,34 @@ def logout_view( request ):
 def search( request ):
     if request.method == 'POST':
         query = request.POST['querystring']
-        print query
         qresult = Record.objects.filter(name__icontains=query)
-        print len( qresult )
+        qcnt = len( qresult )
+        
+        # log the user's query if  user is logged in
+        u = request.user
+        if u.is_authenticated():
+            q = Query(user=u, queryStr=query, cntRes=qcnt)
+            q.save()
+            # for res in qresult:
+                # q.queryRes.add(res)
+                
         return render( request, "quote/index.html", {
             'nvg1': 'active',
             'status': 'result',
             'query': query,
             'results': qresult,
         })
+        
+        
+        
+def query_log( request ):
+    if request.user.is_authenticated():
+        print request.user.username
+        querylist = Query.objects.filter(user__username=request.user.username)
+        return render( request, "quote/querylog.html", {
+            'querylogs' : querylist,
+            })
     
+    
+def registerQuery( request ):
+    pass
