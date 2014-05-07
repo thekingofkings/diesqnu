@@ -1,4 +1,5 @@
 BEGIN;
+
 CREATE TABLE `quote_record` (
     `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
     `company` varchar(200) NOT NULL,
