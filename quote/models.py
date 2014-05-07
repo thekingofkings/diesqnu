@@ -43,4 +43,4 @@ class Query( models.Model ):
     
     
     def __str__( self ):
-        return queryStr
+        return self.queryStr
