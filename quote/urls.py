@@ -13,5 +13,6 @@ urlpatterns = patterns( '',
     url(r'^querylog$', views.query_log, name='querylog'),
     url(r'^registerquery$', views.registerQuery, name='registerQuery'),
     url(r'^unregister/(\d+)$', views.unregisterQuery),
+    url(r'^notify$', views.notify, name='notify'),
     url(r'^createuser$', "quote.views.createUser")
 )

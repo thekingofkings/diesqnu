@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from models import Record, Query
 from django.http import Http404
+from notify import ChangeNotify
 
 
 # Create your views here.
@@ -165,3 +166,16 @@ def unregisterQuery( request, queryID ):
         q.isRegistered = False
         q.save()
         return redirect("querylog")
+        
+        
+def notify( request ):
+    u = request.user
+    querySet = Query.objects.filter(user__id=u.id, isRegistered=True)
+    email = u.email
+    for query in querySet:
+        newRes = Record.objects.filter(name__icontains=query)
+        oldRes = query.queryRes.all()
+        if len(newRes) != len(oldRes):
+            notifier = ChangeNotify()
+            notifier.sendToOneAddress(email, "Your query has new results")
+    return redirect("querylog")
