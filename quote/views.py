@@ -4,6 +4,7 @@ from django.template import RequestContext, loader
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from models import Record, Query
+from django.http import Http404
 
 
 # Create your views here.
@@ -136,4 +137,31 @@ def query_log( request ):
     
     
 def registerQuery( request ):
-    pass
+    if 'queryID' in request.POST:
+        try:
+            qid = request.POST['queryID']
+            q = Query.objects.get(id=int(qid))
+        except Query.DoesNotExist:
+            print "Query not exist"
+            raise Http404
+        else:
+            q.isRegistered = True
+            q.save()
+            qresults = Record.objects.filter(name__icontains=q.queryStr)
+            for res in qresults:
+                q.queryRes.add(res)
+            return redirect("querylog")
+    else:
+        raise Http404
+        
+
+def unregisterQuery( request, queryID ):
+    try:
+        q = Query.objects.get(id=queryID)
+    except Query.DoesNotExist:
+        print "Query", queryID, "does not exist"
+        raise Http404
+    else:
+        q.isRegistered = False
+        q.save()
+        return redirect("querylog")

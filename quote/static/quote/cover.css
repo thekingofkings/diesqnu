@@ -186,7 +186,7 @@ body {
 #welpane {
 	position: absolute;
 	top: 20px;
-	margin-left: 120%;
+	margin-left: 100%;
 	width: 220px;
 }
 
@@ -222,7 +222,12 @@ em {
 }
 
 .checkfield {
-	width: 250px;
+	width: 200px;
+	display: inline-block;
+}
+
+.regStaField {
+	width: 130px;
 	display: inline-block;
 }
 
@@ -233,7 +238,7 @@ em {
 }
 
 .nqrfield {
-	width: 180px;
+	width: 100px;
 	display: inline-block;
 	text-align: center;
 }

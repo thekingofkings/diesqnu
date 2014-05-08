@@ -7,16 +7,25 @@
 
 <div class=res>
 <p class=checkfield>Query string</p>
+<p class=regStaField>Is Registered</p>
 <p class=timefield>Query time</p>
-<p class=nqrfield>Number of Query Results</p>
+<p class=nqrfield>#Results</p>
 </div>
 <form action={% url 'registerQuery' %} method=post>
+	{% csrf_token %}
 	{% for query in querylogs %}
 		<div class=res>
 		<p class=checkfield>
-			<input type=checkbox name=query value=query.id
+			<input type=checkbox name=queryID value={{ query.id }}
 			{% if query.isRegistered %}checked{% endif %}>
 			{{ query.queryStr }}</input>
+		</p>
+		<p class=regStaField>
+			{% if query.isRegistered %}
+				Yes (<a href="unregister/{{ query.id }}">Unregister</a>)
+			{% else %}
+				No 
+			{% endif %}
 		</p>
 		<p class=timefield>
 			{{ query.time }}
