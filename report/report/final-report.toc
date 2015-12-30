@@ -1,0 +1,11 @@
+\contentsline {section}{\numberline {1}Introduction}{1}
+\contentsline {section}{\numberline {2}Functionality Implemented}{2}
+\contentsline {subsection}{\numberline {2.1}Query Quote}{2}
+\contentsline {subsection}{\numberline {2.2}User Registration}{2}
+\contentsline {subsection}{\numberline {2.3}User Login}{2}
+\contentsline {subsection}{\numberline {2.4}Query Log and Notification}{3}
+\contentsline {subsection}{\numberline {2.5}Administration Console}{3}
+\contentsline {section}{\numberline {3}Technical Details}{4}
+\contentsline {subsection}{\numberline {3.1}Crawling}{4}
+\contentsline {subsection}{\numberline {3.2}Identifying Changes and Sending Email Notification}{4}
+\contentsline {section}{\numberline {4}Conclusion}{4}
